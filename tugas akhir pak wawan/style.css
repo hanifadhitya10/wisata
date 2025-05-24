@@ -1,0 +1,39 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+  }
+  
+  .order-info {
+    background-color: #141414;
+    padding: 25px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+  }
+  
+  .order-info h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .order-info p {
+    font-size: 16px;
+    margin: 8px 0;
+    color: #444;
+  }
+  
+  .status {
+    padding: 2px 6px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .status.unpaid {
+    background-color: #ffdddd;
+    color: #c0392b;
+  }
+  
