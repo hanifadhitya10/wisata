@@ -5,7 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wisata Lokal Lampung</title>
   <style>
-   body {
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
       margin: 0;
       font-family: Arial, sans-serif;
       background: linear-gradient(#08374b, #7e4e4b);
@@ -299,7 +303,6 @@
         font-size: 15px;
       }
     }
-
   </style>
 </head>
 <body>
@@ -316,23 +319,22 @@
     </button>
   </div>
 
- <nav>
-  <div class="logo">Wisata Lokal Lampung</div>
-  <div class="nav-links">
-    <a href="index.php">Beranda</a>
-    <a href="#about" class="page-scroll">Tentang kami</a>
-    <a href="wisata.php">Wisata</a>
-    <div class="dropdown">
-      <button class="menu-btn">☰</button>
-      <div class="dropdown-content">
-        <a href="akun.php">akun</a>
-        <a href="logout.php">Logout</a>
-        <a href="cek_tiket.php">Cek Tiket</a>
+  <nav>
+    <div class="logo">Wisata Lokal Lampung</div>
+    <div class="nav-links">
+      <a href="index.php">Beranda</a>
+      <a href="#about" class="page-scroll">Tentang kami</a>
+      <a href="wisata.php">Wisata</a>
+      <div class="dropdown">
+        <button class="menu-btn">☰</button>
+        <div class="dropdown-content">
+          <a href="akun.php">akun</a>
+          <a href="logout.php">Logout</a>
+          <a href="cek_tiket.php">Cek Tiket</a>
+        </div>
       </div>
     </div>
-  </div>
-</nav>
-
+  </nav>
 
   <header>
     <h1>Destinasi</h1>
@@ -341,57 +343,60 @@
 
   <div class="container">
     <div class="grid">
-    <?php
-include 'koneksi.php'; 
+      <?php
+      include 'koneksi.php'; 
 
-$query = "SELECT id, nama, gambar FROM destinasi_wisata ORDER BY id DESC LIMIT 6";
-$result = mysqli_query($koneksi, $query);
+      $query = "SELECT id, nama, gambar FROM destinasi_wisata ORDER BY id DESC LIMIT 6";
+      $result = mysqli_query($koneksi, $query);
 
-if ($result && mysqli_num_rows($result) > 0) {
-  $index = 0;
-  while ($row = mysqli_fetch_assoc($result)) {
-    $delay = $index * 0.2;
-    $gambar = "admin/uploads/" . htmlspecialchars($row['gambar']); 
-    $nama = htmlspecialchars($row['nama']);
-    $id = (int)$row['id'];
+      if ($result && mysqli_num_rows($result) > 0) {
+        $index = 0;
+        while ($row = mysqli_fetch_assoc($result)) {
+          $delay = $index * 0.2;
+          $gambar = "admin/uploads/" . htmlspecialchars($row['gambar']); 
+          $nama = htmlspecialchars($row['nama']);
+          $id = (int)$row['id'];
 
-    echo "<div class='card' style='opacity: 1; animation: fadeIn 0.6s ease forwards; animation-delay: {$delay}s;'>
-            <img src='{$gambar}' alt='{$nama}'>
-            <h3>{$nama}</h3>
-            <a href='detail.php?id={$id}' class='btn'>Detail →</a>
-          </div>";
+          echo "<div class='card' style='opacity: 1; animation: fadeIn 0.6s ease forwards; animation-delay: {$delay}s;'>
+                  <img src='{$gambar}' alt='{$nama}'>
+                  <h3>{$nama}</h3>
+                  <a href='detail.php?id={$id}' class='btn'>Detail →</a>
+                </div>";
 
-    $index++;
-  }
-} else {
-  echo "<p>Tidak ada data destinasi wisata.</p>";
-}
+          $index++;
+        }
+      } else {
+        echo "<p>Tidak ada data destinasi wisata.</p>";
+      }
 
-mysqli_close($koneksi);
-?>
-
+      mysqli_close($koneksi);
+      ?>
     </div>
   </div>
 
   <div id="about">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="about-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-md-6">
+          <div class="about-text">
             <h2>TENTANG KAMI</h2>
-          <h2>Selamat Datang di <span>Wisata Lampung</span></h2>
-          <hr>
-          <p>panduan digital Anda untuk menjelajahi pesona alam dan budaya Lampung!
-Kami hadir untuk membantu Anda menemukan tempat-tempat wisata terbaik di Lampung, mulai dari pantai-pantai eksotis, air terjun tersembunyi, hingga kekayaan budaya dan kuliner lokal yang menggoda selera. Semua informasi kami rangkum dalam satu aplikasi yang mudah digunakan dan selalu diperbarui.
-Dengan fitur rekomendasi destinasi, panduan perjalanan, ulasan pengunjung, dan info event lokal, Wisata Lampung siap menjadi teman setia Anda dalam merencanakan liburan yang seru dan berkesan.
-Dibuat oleh tim yang mencintai Lampung, aplikasi ini adalah wujud semangat kami untuk memperkenalkan keindahan daerah ini kepada dunia, sekaligus mendukung pariwisata lokal.</p>
-          <p>Ayo, temukan keajaiban Lampung bersama kami. Karena setiap sudut Lampung punya cerita yang layak untuk dijelajahi!</p>
-  
-      </div>
+            <h2>Selamat Datang di <span>Wisata Lampung</span></h2>
+            <hr>
+            <p>panduan digital Anda untuk menjelajahi pesona alam dan budaya Lampung!
+            Kami hadir untuk membantu Anda menemukan tempat-tempat wisata terbaik di Lampung, mulai dari pantai-pantai eksotis, air terjun tersembunyi, hingga kekayaan budaya dan kuliner lokal yang menggoda selera. Semua informasi kami rangkum dalam satu aplikasi yang mudah digunakan dan selalu diperbarui.
+            Dengan fitur rekomendasi destinasi, panduan perjalanan, ulasan pengunjung, dan info event lokal, Wisata Lampung siap menjadi teman setia Anda dalam merencanakan liburan yang seru dan berkesan.
+            Dibuat oleh tim yang mencintai Lampung, aplikasi ini adalah wujud semangat kami untuk memperkenalkan keindahan daerah ini kepada dunia, sekaligus mendukung pariwisata lokal.</p>
+            <p>Ayo, temukan keajaiban Lampung bersama kami. Karena setiap sudut Lampung punya cerita yang layak untuk dijelajahi!</p>
+          </div> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+
   <footer class="site-footer">
     <div class="footer-content">
       <p>© 2025 wisata lampung. All Rights Reserved.</p>
-      <small>Design by Kelompok 8.</small>
+      <small>Designed by Kelompok 8.</small>
     </div>
   </footer>
 
@@ -412,23 +417,22 @@ Dibuat oleh tim yang mencintai Lampung, aplikasi ini adalah wujud semangat kami 
   </script>
 
   <script>
-  
-  document.querySelector('.menu-btn').addEventListener('click', function () {
-    document.querySelector('.dropdown').classList.toggle('show');
-  });
+    document.querySelector('.menu-btn').addEventListener('click', function () {
+      document.querySelector('.dropdown').classList.toggle('show');
+    });
 
-  window.onclick = function(event) {
-    if (!event.target.matches('.menu-btn')) {
-      let dropdowns = document.getElementsByClassName("dropdown");
-      for (let i = 0; i < dropdowns.length; i++) {
-        let openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+    window.onclick = function(event) {
+      if (!event.target.matches('.menu-btn')) {
+        let dropdowns = document.getElementsByClassName("dropdown");
+        for (let i = 0; i < dropdowns.length; i++) {
+          let openDropdown = dropdowns[i];
+          if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+          }
         }
       }
-    }
-  };
-</script>
+    };
+  </script>
 
 </body>
 </html>
