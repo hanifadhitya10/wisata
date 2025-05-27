@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    $stmt = $koneksi->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt = $koneksi->prepare("SELECT user_id FROM users WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
